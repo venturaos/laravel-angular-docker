@@ -1,0 +1,94 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "Documentação dos endpoints presentes nessa API",
+        "contact": {
+            "email": "otavio.ventura.0994@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api/v1",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/api/developers": {
+            "get": {
+                "tags": [
+                    "Developer"
+                ],
+                "summary": "Retorna uma lista paginada de desenvolvedores.",
+                "description": "Este endpoint retorna uma lista paginada de desenvolvedores, podendo ser filtrada por nome, idade, gênero, hobby ou data de nascimento.",
+                "operationId": "list",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome do desenvolvedor",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "age",
+                        "in": "query",
+                        "description": "Idade do desenvolvedor",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "Sexo do desenvolvedor",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "hobby",
+                        "in": "query",
+                        "description": "Hobby do desenvolvedor",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "birth_date",
+                        "in": "query",
+                        "description": "Data de Nascimento do desenvolvedor",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Developer",
+            "description": "Operações disponíveis no recurso de Developer."
+        },
+        {
+            "name": "Developers",
+            "description": "API Endpoints of Developers"
+        }
+    ],
+    "security": [
+        []
+    ]
+}

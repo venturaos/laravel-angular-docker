@@ -1,0 +1,45 @@
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Nome</th>
+    <th scope="col">Genero</th>
+    <th scope="col">Idade</th>
+    <th scope="col">Hobby</th>
+    <th scope="col">Data de Nascimento</th>
+    <th scope="col">Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let developer of developersList; index as i">
+    <td>{{ developer.name }}</td>
+    <td>{{ developer.gender }}</td>
+    <td>{{ developer.age }}</td>
+    <td>{{ developer.hobby }}</td>
+    <td>{{ developer.date_birth?.day }}/{{developer.date_birth?.month}}/{{developer.date_birth?.year}}</td>
+    <td>
+      <a type="button" [routerLink]="['/developers/edit', developer.id]">
+        <span class="material-icons text-primary">edit</span>
+      </a>
+      <a type="button" (click)="open(modalConfirmDeleteDeveloper)">
+        <span class="material-icons text-danger">delete</span>
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<ng-template #modalConfirmDeleteDeveloper let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Excluir Desenvolvedor</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <span>Você tem certeza que deseja remover esse registro?</span>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close('Save click')">Não</button>
+    <button type="button" class="btn btn-danger" (click)="deleteDeveloper(modalConfirmDeleteDeveloper)">Sim</button>
+  </div>
+</ng-template>

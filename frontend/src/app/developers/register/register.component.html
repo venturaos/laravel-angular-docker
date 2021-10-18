@@ -1,0 +1,38 @@
+<form [formGroup]="registerForm" focusInvalidInput>
+    <div class="form-group">
+        <label for="name" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="name" placeholder="Digite" formControlName="name" [class.is-invalid]="isInvalid('name')">
+    </div>
+    <div class="form-group">
+        <label for="gender" class="form-label">Genero</label>
+        <select class="form-control" aria-label="Select" id="gender" formControlName="gender" [class.is-invalid]="isInvalid('gender')">
+            <option [value]=null selected>Selecione uma opção</option>
+            <option value="male">Masculino</option>        
+            <option value="female">Feminino</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="age" class="form-label">Idade</label>
+        <input type="number" class="form-control" id="age" placeholder="Digite" formControlName="age" [class.is-invalid]="isInvalid('age')">
+    </div>
+    <div class="form-group">
+        <label for="hobby" class="form-label">Hobby</label>
+        <textarea class="form-control" id="hobby" placeholder="Digite" formControlName="hobby" [class.is-invalid]="isInvalid('hobby')" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="date_birth" class="form-label">Data de Nascimento</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary pb-0" (click)="d.toggle()" type="button" [class.is-invalid]="isInvalid('date_birth')">
+                    <span class="material-icons">event</span>
+                </button>
+            </div>
+            <input class="form-control" placeholder="DD-MM-YYYY" name="date_birth" id="date_birth" ngbDatepicker #d="ngbDatepicker" formControlName="date_birth" [class.is-invalid]="isInvalid('date_birth')">
+        </div>        
+    </div>
+    <div class="d-flex">
+        <button type="button" class="btn btn-secondary flex-grow-1 mr-2" (click)="previousPage()">Voltar</button>
+        <button type="button" class="btn btn-danger flex-grow-1 mr-2" (click)="clearForm()">Limpar</button>
+        <button type="button" class="btn btn-primary flex-grow-1" (click)="onSubmit()">Enviar</button>
+    </div>
+</form>
